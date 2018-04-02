@@ -31,6 +31,7 @@ const postItems = async(e) => {
   })
   const newItem = await postItem.json();
   await renderItems([newItem]);
+  $('input').val('');
 }
 
 const deleteItem = async(e, id) => {
