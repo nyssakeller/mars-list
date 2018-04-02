@@ -12,7 +12,11 @@ const renderItems = items => {
           <h2>${item.item_name}</h2>
           <button class='delete-btn'>Delete</button>
         </section>
-        <input type='checkbox' />
+        <form class='checkbox-form'>
+          <input id='checkbox'
+                 type='checkbox' />
+          <p>Packed</p>
+        </form>
       </div>
     `)
   })
