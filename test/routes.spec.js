@@ -49,7 +49,7 @@ describe('API Routes', () => {
         response.body[0].should.have.property('item_name');
         response.body[0].item_name.should.equal('Oxygen Tank');
         response.body[0].should.have.property('packed_status');
-        response.body[0].packed_status.should.equal(false);
+        response.body[0].packed_status.should.equal('false');
       })
       .catch(err => {
         throw err;
