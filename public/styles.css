@@ -1,0 +1,75 @@
+* {
+  font-family: sans-serif;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin-bottom: 70px;
+  margin-top: 55px;
+  text-align: center;
+}
+
+input {
+  height: 30px;
+  width: 300px;
+}
+
+button {
+  height: 35px;
+  width: 93px;
+}
+
+hr {
+  margin: 70px auto;
+  width: 730px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  border: 1px solid black;
+  height: 150px;
+  margin: 20px 0;
+  width: 400px;
+}
+
+.card-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin-left: 20px;
+}
+
+.delete-btn {
+  height: 25px;
+  margin-right: 20px;
+  width: 60px;
+}
+
+.checkbox-form {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+
+#checkbox {
+  width: 20px;
+}
+
+
