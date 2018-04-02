@@ -40,13 +40,22 @@ const deleteItem = async e => {
       method: 'DELETE'
     }) 
   }
-  fetchItems();
 }
 
-$('.card-container').on('click', deleteItem);
+const checkItem = (e) => {
+  console.log(e.target)
+}
+
+$('.card-container').on('click', (e) => {
+  if (e.target.classList.contains('delete-btn')) {
+    deleteItem(e);
+  } else if (e.target.classList.contains('checkbox')) {
+    checkItem(e);
+  }
+});
 
 $(document).ready(fetchItems());
-$('.server').on('click', e => {
+$('.submit').on('click', e => {
   e.preventDefault();
   postItems(e);
 });

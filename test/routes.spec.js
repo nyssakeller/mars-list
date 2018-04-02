@@ -115,4 +115,18 @@ describe('API Routes', () => {
     });
   });
 
+  describe('PATCH api/v1/items_to_pack/:id', () => {
+    it('should update the packed_status', () => {
+      return chai
+        .request(server)
+        .patch('/api/v1/items_to_pack/5')
+        .send({
+          packed_status: 'true'
+        })
+        .then(response => {
+          response.should.have.status(201);
+        });
+    });
+  });
+
 });
