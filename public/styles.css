@@ -38,3 +38,15 @@ hr {
   width: 400px;
 }
 
+.card-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.delete-btn {
+  height: 25px;
+  width: 70px;
+}
+
