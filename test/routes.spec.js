@@ -89,7 +89,7 @@ describe('API Routes', () => {
       });
     });
 
-    it('should not create a record with missing data', () => {
+    it('should not create a item with missing data', () => {
       return chai.request(server)
       .post('/api/v1/items_to_pack')
       .send()
