@@ -61,7 +61,7 @@ app.patch('/api/v1/items_to_pack/:id', (request, response) => {
     .where('id', id)
     .select()
     .update({
-      packed_status: true
+      packed_status: 'true'
     })
     .then(item => {
       response.status(201).json({ item });
