@@ -2,7 +2,7 @@ const chai = require('chai');
 const should = chai.should();
 const chaiHttp = require('chai-http');
 const server = require('../server.js');
-const environment = process.env.NODE_ENV || 'test';
+const environment = 'test';
 const configuration = require('../knexfile')[environment];
 const database = require('knex')(configuration);
 
@@ -35,6 +35,18 @@ describe('Client Routes', () => {
 });
 
 describe('API Routes', () => {
+  beforeEach((done) => {
+    database.migrate.rollback()
+      .then(() => {
+        database.migrate.latest()
+          .then(() => {
+            return database.seed.run()
+              .then(() => {
+                done();
+              });
+          });
+      });
+  });
 
   describe('GET /api/v1/students', () => {
 
@@ -53,6 +65,28 @@ describe('API Routes', () => {
       })
       .catch(err => {
         throw err;
+      });
+    });
+
+    describe('POST /api/v1/items_to_pack', () => {
+      it('should create a new item', () => {
+        return chai.request(server)
+        .post('/api/v1/items_to_pack') 
+        .send({                   
+          item_name: 'Water',
+          packed_status: false
+        })
+        .then(response => {
+          response.should.have.status(201); 
+          response.body.should.be.a('object');
+          response.body.should.have.property('item_name');
+          response.body.item_name.should.equal('Water');
+          response.body.should.have.property('packed_status');
+          response.body.packed_status.should.equal('false');
+        })
+        .catch(err => {
+          throw err;
+        });
       });
     });
 
