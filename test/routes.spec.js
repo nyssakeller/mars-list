@@ -48,7 +48,7 @@ describe('API Routes', () => {
       });
   });
 
-  describe('GET /api/v1/students', () => {
+  describe('GET /api/v1/items_to_pack', () => {
 
     it('should return all of the items to be packed', () => {
       return chai.request(server)
@@ -89,7 +89,30 @@ describe('API Routes', () => {
         });
       });
     });
+  });
 
+  describe('DELETE /api/v1/items_to_pack/:id/', () => {
+    it('should delete an item when given the correct id', () => {
+      return chai.request(server)
+        .delete(`/api/v1/items_to_pack/1`)
+        .then( response => {
+          response.status.should.equal(204);
+        })
+        .catch( error => {
+          throw error;
+        });
+    });
+
+    it('should return a 404 if no item matches', () => {
+      return chai.request(server)
+        .delete('/api/v1/items_to_pack/999')
+        .then( response => {
+          response.should.have.status(404);
+        })
+        .catch(error => {
+          throw error;
+        });
+    });
   });
 
 });

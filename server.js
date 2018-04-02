@@ -41,6 +41,20 @@ app.post('/api/v1/items_to_pack', (request, response) => {
     });
 });
 
+app.delete('/api/v1/items_to_pack/:id/', (request, response) => {
+  const { id } = request.params;
+  const item = database('items_to_pack').where('id', id);
+  
+  item.delete()
+    .then(data => {
+      return response.status(204).json({ data });
+    })
+    .catch(error => {
+      return response.status(404).json({ error });
+    });
+});
+
+
 app.listen(app.get('port'), () => {
   console.log(`Mars Packing List is running on ${app.get('port')}.`);
 });
