@@ -8,7 +8,7 @@ const renderItems = items => {
   items.forEach(item => {
     $('.card-container').prepend(`
       <div class='card'>
-        <section class='card-header'>
+        <section class='card-header' id=${item.id}>
           <h2>${item.item_name}</h2>
           <button class='delete-btn'>Delete</button>
         </section>
@@ -33,8 +33,21 @@ const postItems = async(e) => {
   await renderItems([newItem]);
 }
 
-$(document).ready(fetchItems())
-$('button').on('click', e => {
+const deleteItem = async e => {
+  const id = e.target.parentElement.id
+  if (e.target.classList.contains('delete-btn')) {
+    await fetch(`/api/v1/items_to_pack/${id}`, {
+      method: 'DELETE'
+    }) 
+  }
+  fetchItems();
+}
+
+$('.card-container').on('click', deleteItem);
+
+$(document).ready(fetchItems());
+$('.server').on('click', e => {
   e.preventDefault();
   postItems(e);
-})
+});
+
