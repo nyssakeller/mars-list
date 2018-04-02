@@ -8,7 +8,7 @@ const renderItems = items => {
   items.forEach(item => {
     $('.card-container').prepend(`
       <div class='card'>
-        <h1>${item.item_name}</h1>
+        <h2>${item.item_name}</h2>
         <button>Delete</button>
         <input type='checkbox' />
       </div>
