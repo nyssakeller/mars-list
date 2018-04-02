@@ -43,14 +43,14 @@ app.post('/api/v1/items_to_pack', (request, response) => {
 
 app.delete('/api/v1/items_to_pack/:id/', (request, response) => {
   const { id } = request.params;
-  const items = database('items_to_pack');
-
-  items.where('id', id).delete()
-    .then( data => {
+  const item = database('items_to_pack').where('id', id);
+  
+  item.delete()
+    .then(data => {
       return response.status(204).json({ data });
     })
-    .catch( error => {
-      return response.status(500).json({ error });
+    .catch(error => {
+      return response.status(404).json({ error });
     });
 });
 
