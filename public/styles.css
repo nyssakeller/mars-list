@@ -5,6 +5,7 @@ header {
 }
 
 h1 {
+  margin-bottom: 70px;
   text-align: center;
 }
 
@@ -19,8 +20,8 @@ button {
 }
 
 hr {
-  margin-top: 40px;
-  width: 580px;
+  margin: 70px auto;
+  width: 730px;
 }
 
 .card-container {
