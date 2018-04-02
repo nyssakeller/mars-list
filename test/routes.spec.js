@@ -89,7 +89,19 @@ describe('API Routes', () => {
         });
       });
     });
+  });
 
+  describe('DELETE /api/v1/items_to_pack/:id/', () => {
+    it('should delete a venue when given the correct id', () => {
+      return chai.request(server)
+        .delete('/api/v1/items_to_pack/1')
+        .then( response => {
+          response.should.have.status(204);
+        })
+        .catch( error => {
+          throw error;
+        });
+    });
   });
 
 });
