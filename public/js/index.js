@@ -7,9 +7,11 @@ const fetchItems = async() => {
 const renderItems = items => {
   items.forEach(item => {
     $('.card-container').prepend(`
-      <h1>${item.item_name}</h1>
-      <button>Delete</button>
-      <input type='checkbox' />
+      <div class='card'>
+        <h1>${item.item_name}</h1>
+        <button>Delete</button>
+        <input type='checkbox' />
+      </div>
     `)
   })
 }
